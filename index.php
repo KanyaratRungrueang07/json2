@@ -74,7 +74,22 @@
             .fail((xhr, status, error)=>{
             })
     }
-  
+    function ShowComment(id){
+        $("#divInfo").show();
+        $("#divMain").hide();
+        var url ="https://jsonplaceholder.typicode.com/posts/"+id;
+        $.getJSON(url)
+            .done((data)=>{
+                $("#demo1").text( JSON.stringify(data));
+
+                var url2="https://jsonplaceholder.typicode.com/posts/"+idt+" / comments" ;
+                $.getJSON(url2)
+                .done((data)=>{
+                    $("#demo1").text( JSON.stringify(data));
+                })
+            })
+    }
+  // var url2 = "https://jsonplaceholder.typicode.com/posts/"+id+"/comments";
     $(()=>{
         loadPosts();
         $("#btnBack").click(()=>{
